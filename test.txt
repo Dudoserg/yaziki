@@ -1,0 +1,11 @@
+int main(){
+        int a = 0;
+	    if( a ){
+	        int tmp;
+	        a = 1;
+	    }
+	    else{
+	        int tmp;
+	        a = 2;
+	    }
+}

@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public class Interpreter {
 
+    TDiagram tDiagram;
+
     private String arrayChar2String(ArrayList<Character> l){
 
         String result = "";
@@ -14,6 +16,8 @@ public class Interpreter {
 
     // Устанавливаем ЗНАЧЕНИЕ переменной в КОНТЕЙНЕРЕ
     public void saveValue(ArrayList<Character> l, Container container){
+        if( this.tDiagram.flag_interpreter == 0)
+            return ;
         switch (container.type){
             case Node.TYPE_INTEGER :{
                 // Преобразуем массив символов в строку
@@ -39,11 +43,15 @@ public class Interpreter {
     }
 
     public void setValue_from_Tree(Tree node, Container container){
+        if( this.tDiagram.flag_interpreter == 0)
+            return ;
         container.value = node.n.value_copy();
     }
 
 
     public void calculate( Container first, Container second, int sign){
+        if( this.tDiagram.flag_interpreter == 0)
+            return ;
         switch (first.type){
             case Node.TYPE_INTEGER :{
 
@@ -792,6 +800,8 @@ public class Interpreter {
 
     // Записываем значение в дерево
     public void saveValue_in_Tree(Container container, Tree k){
+        if( this.tDiagram.flag_interpreter == 0)
+            return ;
         //
         k.n.value = container.value_Copy();
 

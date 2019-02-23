@@ -26,8 +26,10 @@ public class TDiagram {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         semantic = new Semantic();
         semantic.scaner = this.scaner;
+        semantic.tDiagram = this;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         interpreter = new Interpreter();
+        interpreter.tDiagram = this;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         int t ;
@@ -253,6 +255,7 @@ public class TDiagram {
         semantic.sem1(l,containerT);
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem1
         t = scaner.next(l);
+        int typeFunction = t;
         if( t != scaner._ID && t != scaner._MAIN) {
             scaner.printError("13Ожидался идентификатор", l);
             return false;
@@ -272,8 +275,8 @@ public class TDiagram {
         if( t != scaner._PARENTHESIS_CLOSE) { // != ')'
             // восстанавливаем метку до считываниея ')'
            scaner.setSavePoint(savePoint1);
-            // Список параметров
 
+            // Список параметров
             if( !this.lis_of_parametr(k))
                 return false;
 
@@ -283,12 +286,24 @@ public class TDiagram {
             scaner.printError("15Ожидался символ ')'", l);
             return false;
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////inter
+        // если это не мейн, то мы не будем интерпретировать тело функции
+        if( typeFunction != Scaner._MAIN)
+            flag_interpreter = 0;
+        // Сохраняем указатель на начало тела функции
+        k.n.savePoint_before_body_function = scaner.getSavePoint();
+
         // Составной оператор
         if( !this.compound_operator_WITHOUT_CREATE_BLACK_VERTEX())///////////////////////////////////////////// У функции свой собственный составной оператор
             return false;                                                                                             // который не создает две черные вершины
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////// inter
+        // возобнавляем интерпритацию
+        this.flag_interpreter = 1;
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem18
         semantic.sem18(k);
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem18
+
+
         return true;
     }
 
@@ -918,5 +933,13 @@ public class TDiagram {
             return false;
         }
         return true;
+    }
+
+    private String arrayChar2String(ArrayList<Character> l){
+
+        String result = "";
+        for(int i = 0 ; i < l.size(); i++)
+            result += l.get(i);
+        return result;
     }
 }

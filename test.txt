@@ -1,11 +1,9 @@
+int func(int a){
+    int a = 2;
+    return 2 + 2;
+    a = a + 2;
+}
 int main(){
-        int a = 0;
-	    if( a ){
-	        int tmp;
-	        a = 1;
-	    }
-	    else{
-	        int tmp;
-	        a = 2;
-	    }
+    int v = 2;
+    
 }

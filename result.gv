@@ -40,7 +40,7 @@ graph binary {
 		rank=same v6 -- v5center  -- v5notVisibleR  [style=invis] 
 	}
 	v6[label="v"]
-	v6[xlabel="int=0 "]
+	v6[xlabel="int=2 "]
 	v2[style=filled, fillcolor=black]
 	v2[label="black"]
 	v2[xlabel=" "]

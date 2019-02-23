@@ -305,8 +305,9 @@ public class Semantic {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void sem1(ArrayList<Character> lex, Container t){
-        if( this.tDiagram.flag_interpreter == 0)
-            return;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return ;
 
         String strLex = new String();
         for(Character character: lex)
@@ -320,8 +321,9 @@ public class Semantic {
 
 
     public Tree sem2Const(ArrayList<Character> lex, Container t){
-        if( this.tDiagram.flag_interpreter == 0)
-            return null;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return null;
 
         if ( dupControl_OneLevel(cur, lex) )
             scaner.printError("Повторное описание идентификатора ", lex);
@@ -345,8 +347,9 @@ public class Semantic {
     }
     
     public Tree sem2(ArrayList<Character> lex, Container t){
-        if( this.tDiagram.flag_interpreter == 0)
-            return null;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return null;
 
         if ( dupControl_OneLevel(cur, lex) )
             scaner.printError("Повторное описание идентификатора ", lex);
@@ -370,8 +373,9 @@ public class Semantic {
     }
 
     public boolean sem3(Container t, Container g, ArrayList<Character> l){
-        if( this.tDiagram.flag_interpreter == 0)
-            return true;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return true;
         if( t.type == Node.TYPE_UNKNOWN || g.type == Node.TYPE_UNKNOWN){
             scaner.printError("Невозможно привести типы ", l);
             g.type = Node.TYPE_UNKNOWN;
@@ -410,7 +414,8 @@ public class Semantic {
 
 
     public Tree sem21(ArrayList<Character> lex, Container t){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return null;
         if( cur.findUp(lex) != null ){
             // Если нашли совпадение
@@ -445,21 +450,24 @@ public class Semantic {
 
 
     public void sem17(Tree k){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return ;
         k.n.param++;
     }
 
 
     public void sem18(Tree k){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return ;
         this.cur = k;
     }
 
 
     public Tree sem4(){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return null;
         Node b = new Node();
         b.nameNode = ++Node.countNode;
@@ -492,7 +500,8 @@ public class Semantic {
 
 
     public Tree sem5( ArrayList<Character> lex, Container type){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return null;
         Tree tmp = cur.findUp(lex);
         if( tmp == null){
@@ -511,7 +520,8 @@ public class Semantic {
 
 
     public Tree sem5Assign( ArrayList<Character> lex, Container type){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return null;
         Tree tmp = cur.findUp(lex);
         // Проверяем, Мб такой переменной/константы вообще нет
@@ -539,7 +549,8 @@ public class Semantic {
 
 
     public Tree sem5func( ArrayList<Character> lex, Container container){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return null;
         Tree tmp = cur.findUp(lex);
         if( tmp == null){
@@ -562,7 +573,8 @@ public class Semantic {
 
 
     public void semParamDeclared(Tree t, Container type, ArrayList<Character> lex){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return ;
         if( type.type != Node.TYPE_UNKNOWN)
             t.n.flag_declared = 1;
@@ -573,7 +585,8 @@ public class Semantic {
 
 
     public void semCheckType(int countParam, Tree k,Container type, ArrayList<Character> lex){
-        if( this.tDiagram.flag_interpreter == 0)
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
             return ;
         if( k == null ){
             return;
@@ -597,8 +610,9 @@ public class Semantic {
 
 
     public void semCheckCountParam(int countParam, Tree k, ArrayList<Character> lex){
-        if( this.tDiagram.flag_interpreter == 0)
-            return ;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return ;
         if( k == null ){
             return;
         }
@@ -610,8 +624,9 @@ public class Semantic {
 
 
     public void sem55(int typelex, Container t){
-        if( this.tDiagram.flag_interpreter == 0)
-            return ;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return ;
         switch (typelex){
             case Scaner._TYPE_INT_10:{
                 t.type = Node.TYPE_INTEGER;
@@ -638,8 +653,9 @@ public class Semantic {
 
 
     public int sem6(Container t, Container g, int sign, ArrayList<Character> l){
-        if( this.tDiagram.flag_interpreter == 0)
-            return 0;
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return 0;
         if( t.type == Node.TYPE_UNKNOWN || g.type == Node.TYPE_UNKNOWN)
             return Node.TYPE_UNKNOWN;
 

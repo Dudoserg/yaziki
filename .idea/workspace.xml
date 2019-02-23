@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="944592eb-3811-44ed-bd16-5c2db64b5e8c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yaziki_5/Interpreter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yaziki_5/Interpreter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/yaziki_5/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yaziki_5/Node.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yaziki_5/Semantic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yaziki_5/Semantic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/yaziki_5/TDiagram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/yaziki_5/TDiagram.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/result.gv" beforeDir="false" afterPath="$PROJECT_DIR$/result.gv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/result.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/result.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Semantic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Semantic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TDiagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TDiagram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
@@ -31,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+            <state relative-caret-position="225">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="4" selection-start-line="2" selection-end-line="2" selection-end-column="4" />
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -61,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TDiagram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="502" column="48" lean-forward="true" selection-start-line="502" selection-start-column="48" selection-end-line="502" selection-end-column="48" />
+            <state relative-caret-position="208">
+              <caret line="522" column="10" selection-start-line="522" selection-start-column="10" selection-end-line="522" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Semantic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-408">
-              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="80">
+              <caret line="623" lean-forward="true" selection-start-line="623" selection-end-line="623" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#arrayChar2String#0;class#Semantic#0" />
@@ -88,13 +85,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Interpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="13" selection-end-column="5" />
+            <state relative-caret-position="123">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#saveValue#0;class#Interpreter#0" />
-                <element signature="method#setValue_from_Tree#0;class#Interpreter#0" />
-                <element signature="method#calculate#0;class#Interpreter#0" />
               </folding>
             </state>
           </provider>
@@ -130,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Scaner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="136">
               <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -150,15 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findUp</find>
-      <find>овпадение количества параметров функции(что то их тут мно</find>
-      <find>есовпадение типов параметров функци</find>
-      <find>Несовпадение количества параметров функции</find>
-      <find>свой собст</find>
-      <find>new Node();</find>
-      <find>width=0</find>
-      <find>sem4</find>
-      <find>= new N</find>
       <find>b.countNode++;</find>
       <find>Node.countNode++;</find>
       <find>notVisibleL</find>
@@ -180,6 +165,15 @@
       <find>func(</find>
       <find>оператор</find>
       <find>// оператор</find>
+      <find>выражени</find>
+      <find>this.expression</find>
+      <find>func_ret</find>
+      <find>this.tDiagram.flag_interpreter == 0</find>
+      <find>if( this.tDiagram.flag_interpreter != 1 )</find>
+      <find>if( this.tDiagram.flag_interpreter != 1)</find>
+      <find>this.tDiagram.flag_interpreter</find>
+      <find>flag_</find>
+      <find>ожидался символ</find>
     </findStrings>
     <replaceStrings>
       <replace>public final static</replace>
@@ -189,6 +183,7 @@
       <replace>++Node.countNode;</replace>
       <replace>&quot;v&quot; + current.n.nameNode</replace>
       <replace>flag_interpreter</replace>
+      <replace>this.tDiagram.flag_interpreter != 1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -204,9 +199,9 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/TDataValue.java" />
         <option value="$PROJECT_DIR$/src/Container.java" />
-        <option value="$PROJECT_DIR$/src/Semantic.java" />
-        <option value="$PROJECT_DIR$/src/Interpreter.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
+        <option value="$PROJECT_DIR$/src/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/Semantic.java" />
         <option value="$PROJECT_DIR$/test.txt" />
         <option value="$PROJECT_DIR$/src/TDiagram.java" />
       </list>
@@ -246,7 +241,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550773460206" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550908290865" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -315,18 +310,18 @@
       <workItem from="1550668493632" duration="10814000" />
       <workItem from="1550727057835" duration="28342000" />
       <workItem from="1550807088008" duration="298000" />
-      <workItem from="1550846192634" duration="2060000" />
+      <workItem from="1550846192634" duration="5219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153686000" />
+    <option name="totallyTimeSpent" value="156845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13046272" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13046272" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -337,15 +332,15 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32839838" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32839838" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32974428" />
       <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -372,13 +367,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Semantic.java</url>
-          <line>581</line>
+          <line>594</line>
           <properties />
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Semantic.java</url>
-          <line>592</line>
+          <line>605</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
@@ -402,37 +397,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>18</line>
+          <line>20</line>
           <properties />
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>167</line>
+          <line>169</line>
           <properties />
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>851</line>
+          <line>887</line>
           <properties />
           <option name="timeStamp" value="107" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>822</line>
+          <line>858</line>
           <properties />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>793</line>
+          <line>829</line>
           <properties />
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>891</line>
+          <line>927</line>
           <properties />
           <option name="timeStamp" value="110" />
         </line-breakpoint>
@@ -444,135 +439,147 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>841</line>
+          <line>877</line>
           <properties />
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>216</line>
+          <line>218</line>
           <properties />
           <option name="timeStamp" value="116" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>869</line>
+          <line>905</line>
           <properties />
           <option name="timeStamp" value="117" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>239</line>
+          <line>241</line>
           <properties />
           <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>476</line>
-          <properties />
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>539</line>
+          <line>575</line>
           <properties />
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>924</line>
+          <line>960</line>
           <properties />
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>756</line>
+          <line>792</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>657</line>
+          <line>693</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>683</line>
+          <line>719</line>
           <properties />
           <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>763</line>
+          <line>799</line>
           <properties />
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>729</line>
+          <line>765</line>
           <properties />
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>586</line>
+          <line>622</line>
           <properties />
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>542</line>
+          <line>578</line>
           <properties />
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>479</line>
+          <line>508</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>411</line>
+          <line>413</line>
           <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>348</line>
+          <line>350</line>
           <properties />
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>312</line>
+          <line>314</line>
           <properties />
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>242</line>
+          <line>244</line>
           <properties />
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>175</line>
+          <line>177</line>
           <properties />
           <option name="timeStamp" value="150" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>99</line>
+          <line>101</line>
           <properties />
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
-          <line>24</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
+          <line>486</line>
+          <properties />
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
+          <line>503</line>
+          <properties />
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TDiagram.java</url>
+          <line>917</line>
+          <properties />
+          <option name="timeStamp" value="155" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -623,19 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#saveValue#0;class#Interpreter#0" />
-            <element signature="method#setValue_from_Tree#0;class#Interpreter#0" />
-            <element signature="method#calculate#0;class#Interpreter#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Container.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -659,7 +653,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Scaner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="136">
           <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -667,10 +661,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Semantic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="623" lean-forward="true" selection-start-line="623" selection-end-line="623" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#arrayChar2String#0;class#Semantic#0" />
+            <element signature="method#recursion#0;class#Semantic#0" />
+            <element signature="method#createPicture#0;class#Semantic#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+        <state relative-caret-position="225">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -686,28 +703,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="4" selection-start-line="2" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Semantic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#arrayChar2String#0;class#Semantic#0" />
-            <element signature="method#recursion#0;class#Semantic#0" />
-            <element signature="method#createPicture#0;class#Semantic#0" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TDiagram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="502" column="48" lean-forward="true" selection-start-line="502" selection-start-column="48" selection-end-line="502" selection-end-column="48" />
+        <state relative-caret-position="208">
+          <caret line="522" column="10" selection-start-line="522" selection-start-column="10" selection-end-line="522" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

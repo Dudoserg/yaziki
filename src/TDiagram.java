@@ -10,6 +10,8 @@ public class TDiagram {
 
     int flag_interpreter = 1;
 
+    int flag_manual_interpritation = 0;
+
     boolean SHOW_NAME_NOT_TERMINAL = false;
 
     public TDiagram() throws IOException, InterruptedException {
@@ -475,6 +477,33 @@ public class TDiagram {
     }
 
 
+    public boolean func_return(){
+        if(SHOW_NAME_NOT_TERMINAL) System.out.println("func_return");
+        ArrayList<Character> l = new ArrayList<>();
+        int t ;
+        SavePoint savePoint1 ;
+        // Считываем "return"
+        savePoint1 = scaner.getSavePoint();
+        t = scaner.next(l);
+
+        // Считываем то, что после "return"
+        savePoint1 = scaner.getSavePoint();
+        t = scaner.next(l);
+
+        scaner.setSavePoint(savePoint1);
+        Container containerT = new Container();
+        if( !this.expression(containerT))
+            return true;
+
+        t = scaner.next(l);
+        if( t != scaner._SEMICOLON){
+            scaner.printError("33ожидался символ ';'",l);
+            return false;
+        }
+
+        return true;
+    }
+
     // Оператор
     public boolean operator(){
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("operator");
@@ -484,9 +513,16 @@ public class TDiagram {
 
         savePoint1 = scaner.getSavePoint();
         t = scaner.next(l);
-        if( t == scaner._ID){
-            //scaner.setUk(uk1); scaner.setSavePoint(savePoint1);
 
+        // Проверка на return
+        if( arrayChar2String(l).equals("return") && t == scaner._ID ){
+            scaner.setSavePoint(savePoint1);
+            if( !this.func_return())
+                return false;
+        }
+        //
+        else if( t == scaner._ID){
+            //scaner.setUk(uk1); scaner.setSavePoint(savePoint1);
             t = scaner.next(l);
             if( t == scaner._ASSIGN){
                 // Присваивание

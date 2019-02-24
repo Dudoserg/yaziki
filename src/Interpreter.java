@@ -1,5 +1,6 @@
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Interpreter {
 
@@ -808,6 +809,82 @@ public class Interpreter {
                 return ;
         //
         k.n.value = container.value_Copy();
+
+    }
+
+    // Восстанавливаем стек в переменные фукнции
+    public void read_param_from_stack(Tree current, Stack<Container> stack){
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return ;
+        while (!stack.empty()) {
+            Container container = stack.pop();
+            current.n.value = container.value.copy();
+            current.n.dataType =container.type;
+            current.n.flag_declared = 1;
+            current = current.up;
+        }
+    }
+
+    /// получаем node и container. Присваиваем функции значение с приведением типов
+    public  void set_value_in_return(Tree node, Container container){
+        if (this.tDiagram.flag_manual_interpritation != 1)
+            if( this.tDiagram.flag_interpreter != 1 )
+                return ;
+        if( node.n.dataType != Node.TYPE_FUNC){
+            System.out.println("==========EROOR #1=============");
+            return;
+        }
+        node.n.value = new TDataValue();
+        switch (node.n.returnType){
+            case Node.TYPE_INTEGER :{
+                // int = int
+                if(container.type == Node.TYPE_INTEGER){
+                    node.n.value.set_data_Int(container.value.data_Int);
+                }
+                // int = double
+                else if(container.type == Node.TYPE_DOUBLE){
+                    node.n.value.set_data_Int(container.value.data_Double);
+                }
+                // int = char
+                else if(container.type == Node.TYPE_CHAR){
+                    node.n.value.set_data_Int(container.value.data_Char);
+                }
+                break;
+            }
+
+            case  Node.TYPE_DOUBLE:{
+                // double = int
+                if(container.type == Node.TYPE_INTEGER){
+                    node.n.value.set_data_Double(container.value.data_Int);
+                }
+                // double = double
+                else if(container.type == Node.TYPE_DOUBLE){
+                    node.n.value.set_data_Double(container.value.data_Double);
+                }
+                // double = char
+                else if(container.type == Node.TYPE_CHAR){
+                    node.n.value.set_data_Double(container.value.data_Char);
+                }
+                break;
+            }
+
+            case Node.TYPE_CHAR:{
+                // char = int
+                if(container.type == Node.TYPE_INTEGER){
+                    node.n.value.set_data_Char(container.value.data_Int);
+                }
+                // char = double
+                else if(container.type == Node.TYPE_DOUBLE){
+                    node.n.value.set_data_Char(container.value.data_Double);
+                }
+                // char = char
+                else if(container.type == Node.TYPE_CHAR){
+                    node.n.value.set_data_Char(container.value.data_Char);
+                }
+                break;
+            }
+        }
 
     }
 

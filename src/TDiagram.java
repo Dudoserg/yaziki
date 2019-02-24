@@ -9,9 +9,14 @@ public class TDiagram {
 
     Interpreter interpreter;
 
+    Tree pointer_current_function;
+
+
     int flag_interpreter = 1;
 
     int flag_manual_interpritation = 0;
+
+    int flag_createPicture = 0;
 
     Stack stack = new Stack();
 
@@ -22,9 +27,14 @@ public class TDiagram {
         scaner = new Scaner();
         if( this.programma()){
             System.out.println("all is ok");
+            this.flag_createPicture = 1;
             semantic.createPicture();
         }
         else ;
+    }
+
+    public boolean is_interpritation(){
+        return ( this.flag_manual_interpritation == 1 || this.flag_interpreter == 1);
     }
 
     public boolean programma() throws IOException, InterruptedException {
@@ -259,16 +269,17 @@ public class TDiagram {
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem1
         semantic.sem1(l,containerT);
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem1
+
         t = scaner.next(l);
         int typeFunction = t;
         if( t != scaner._ID && t != scaner._MAIN) {
             scaner.printError("13Ожидался идентификатор", l);
             return false;
         }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem1
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem21
+        // объявление функции
         Tree k = semantic.sem21(l,containerT);
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem1
+
         t = scaner.next(l);
         // != '('
         if(t != scaner._PARENTHESIS_OPEN){
@@ -351,7 +362,7 @@ public class TDiagram {
 
 
     // составной оператор
-    public boolean compound_operator_WITHOUT_CREATE_BLACK_VERTEX() throws IOException, InterruptedException {
+    public boolean compound_operator_WITHOUT_CREATE_BLACK_VERTEX( ) throws IOException, InterruptedException {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("compound_operator");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -504,8 +515,22 @@ public class TDiagram {
             scaner.printError("33ожидался символ ';'",l);
             return false;
         }
+        // Если не интерпритируем, то не идем дальше
+        if (this.flag_manual_interpritation == 1 || this.flag_interpreter == 1) {
+            // сохраняем полученное значение в функцию
+            // приводим типы
+            interpreter.set_value_in_return(this.pointer_current_function, containerT);
 
-        return true;
+
+            // возвращаемся на место, где закончен вызов функции
+            if (this.pointer_current_function != null)
+                this.scaner.setSavePoint(this.pointer_current_function.n.savePoint_after_function_call);
+
+        }
+        if (this.flag_manual_interpritation != 1)
+            if( this.flag_interpreter != 1 )
+                return true;
+        return false;
     }
 
     // Оператор
@@ -646,7 +671,8 @@ public class TDiagram {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////// sem5
         Tree k;
         // Проверяем объявлена ли функция, ищем ее узел
-        k = semantic.sem5func(l, container);
+            //нужно найти именно образец
+        k = semantic.find_prototype_function(l, container);
 
         t = scaner.next(l);
         if( t != scaner._PARENTHESIS_OPEN){
@@ -673,8 +699,11 @@ public class TDiagram {
                 // Проверяем количество параметров функции и совпадение их типов
                 boolean flag_tmp = semantic.semCheckType(countParam, k, containerG, l);
                 if( !flag_tmp) return false;
-                // Кладем в стек очередную считанную переменную / выражение
-                this.stack.push(containerG.copy());
+
+                // Кладем в стек очередную считанную переменную / выражение     // Если только мы интерпретируем
+                if( this.is_interpritation())
+                    this.stack.push(containerG.copy());
+
 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////// semCheckType
                 savePoint1 = scaner.getSavePoint();
@@ -696,13 +725,17 @@ public class TDiagram {
             return false;
         }
 
+        // Если не интерпритируем, то тут нужно выходить
+        if (this.flag_manual_interpritation != 1)
+            if( this.flag_interpreter != 1 )
+                return true;
+
         // запоминаем точку, для возвращения из фукнции
         k.n.savePoint_after_function_call = scaner.getSavePoint();
 
 
 
-        // Начинаем переход к функции
-        scaner.setSavePoint(k.n.savePoint_before_body_function);
+
 
         // Коприуем дерево функции с локальными операторами. Помеащем его левым потомком
         // 2) при вызове копируется поддерево функции вместе с поддеревом формальных параметров;
@@ -715,13 +748,46 @@ public class TDiagram {
 
         Tree last_left_elem =  semantic.last_children_function(newFunction);
 
+        Tree old_cur = semantic.cur;
+
         semantic.cur = last_left_elem;
 
         semantic.createPicture();
 
-        if( !this.compound_operator_WITHOUT_CREATE_BLACK_VERTEX())
-            return false;
+        // 3) текущий указатель текста и текущий указатель семантического дерева устанавливается на позиции, соответствующие функции;
+        scaner.setSavePoint(newFunction.n.savePoint_before_body_function);
 
+
+        // восстанавливаем переменные из стека В ПОДДЕРЕВО СКОПИРОВАНОЙ ФУКНЦИИ
+        interpreter.read_param_from_stack(last_left_elem, this.stack);
+        semantic.createPicture();
+
+        // сохраняем глобальный указатель на вызванную функцию
+        Tree local_pointer_current_function = this.pointer_current_function;
+        this.pointer_current_function = newFunction;
+
+        this.compound_operator_WITHOUT_CREATE_BLACK_VERTEX();
+
+        // восстанавливаем текущий элемент
+        semantic.cur = old_cur;
+
+        semantic.createPicture();
+
+
+
+
+        //считываем значение с функции
+        container.value = this.pointer_current_function.n.value.copy();
+        container.type = this.pointer_current_function.n.returnType;
+
+        // восстанавливаем глобальный указатель на вызыванную функцию
+        this.pointer_current_function = local_pointer_current_function;
+
+
+        // удаляем функцию из дерева
+        semantic.deleteNode(newFunction);
+
+        semantic.createPicture();
         int a = 1;
         int b = a;
         int c = b;
@@ -919,7 +985,7 @@ public class TDiagram {
             container.type = semantic.sem6(container, containerG, t, l);
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// interpreter calculate
             interpreter.calculate(container, containerG, t);
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////////////////////fu//////////
             savePoint1 = scaner.getSavePoint();
             t = scaner.next(l);
         }

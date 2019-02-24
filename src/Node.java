@@ -19,7 +19,10 @@ public class Node {
         return Node.get_next_nameNode();
     }
 
+
+
     int nameNode;
+
     ArrayList<Character> id;        // Изображение
 
     int dataType;                   // тип(функция инт ...
@@ -29,6 +32,8 @@ public class Node {
     int param;                      // количество параметров
 
     int returnType;                 // возвращаемый тип
+
+    int prototype = 0;
 
     int flag_constant;      //
 
@@ -45,6 +50,7 @@ public class Node {
     public Node() {
         flag_constant = 0;
         flag_declared = 0;
+        prototype = 0;
     }
 
     public TDataValue value_copy(){
@@ -57,6 +63,7 @@ public class Node {
 
         result.savePoint_before_body_function = this.savePoint_before_body_function;
 
+        result.prototype = 0;
         if( this.value != null)
             result.value = this.value.copy();
 
@@ -82,4 +89,6 @@ public class Node {
 
         return result;
     }
+
+
 }

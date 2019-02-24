@@ -30,16 +30,42 @@ public class TDataValue {
         clearData();
         this.data_Int = x;
     }
+    void set_data_Int(double x){
+        clearData();
+        this.data_Int = (int)x;
+    }
+    void set_data_Int(char x){
+        clearData();
+        this.data_Int = x;
+    }
 
+    void set_data_Double(int x){
+        clearData();
+        this.data_Double = x;
+    }
     void set_data_Double(double x){
         clearData();
         this.data_Double = x;
+    }
+    void set_data_Double(char x){
+        clearData();
+        this.data_Double = x;
+    }
+
+    void set_data_Char(int x){
+        clearData();
+        this.data_Char = (char)x;
+    }
+    void set_data_Char(double x){
+        clearData();
+        this.data_Char = (char)x;
     }
 
     void set_data_Char(char x){
         clearData();
         this.data_Char = x;
     }
+
 
 
 }

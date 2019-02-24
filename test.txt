@@ -1,10 +1,11 @@
-int xx = (23 - (3)) * 10;
-int func(int a, int v){
-    int s =  2;
+int func(int a){
+    if( a == 0)
+        return 0;
+    if( a == 1)
+        return 1;
+    return func(a-1) + func(a-2);
 }
 int main(){
-    int c = 228;
-    func(5, 6 + 9);
-    int b;
+    int x = func(20);
 
 }

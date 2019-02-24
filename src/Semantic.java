@@ -23,7 +23,7 @@ public class Semantic {
 
     HashMap<String, Integer> types;
 
-
+// копируем поддерево с функцией
     public Tree last_children_function(Tree func){
         Tree current = func.right;
         while (current.left != null)
@@ -69,6 +69,7 @@ public class Semantic {
         return tmp;
     }
 
+// Рисуем картинку по дереву
 
     private String arrayChar2String(Tree current){
         if( current.n.dataType == Node.TYPE_BLACK)
@@ -197,8 +198,9 @@ public class Semantic {
             recursion(current.right, writer);
     }
 
-
     public  void createPicture() throws InterruptedException, IOException {
+        if(this.tDiagram.flag_createPicture != 1)
+            return;
         try(FileWriter writer = new FileWriter("result.gv", false))
         {
             // запись всей строки
@@ -479,6 +481,7 @@ public class Semantic {
         b.dataType = Node.TYPE_FUNC;
         b.data = null;
         b.param = 0; // количество параметров функции
+        b.prototype = 1;
         b.returnType = t.type;
         cur.setLeft(b);
         cur = cur.left;
@@ -597,12 +600,47 @@ public class Semantic {
         return tmp;
     }
 
+
+    public  Tree find_prototype_function(ArrayList<Character> lex, Container container) throws IOException, InterruptedException {
+        this.createPicture();
+        if (this.tDiagram.flag_manual_interpritation != 1){
+            if( this.tDiagram.flag_interpreter != 1 )
+                return null;
+        }
+        Tree tmp = null;
+        tmp = cur.findUp(lex);
+        do{
+            if( tmp.n.prototype == 1)
+                break;
+            if(tmp.up != null)
+                tmp = tmp.up;
+
+        }while (true);
+
+        if( tmp == null){
+            scaner.printError("Идентификатор не определен", lex);
+            container.type = Node.TYPE_UNKNOWN;
+            return tmp;
+        }
+        if( tmp.n.dataType != Node.TYPE_FUNC){
+            // Теперь пройдемся вверх, ища функцию
+            Tree local = cur.findFunction(lex);
+            if(local == null){
+                scaner.printError("Функции с таким идентификатором не существует", lex);
+                container.type = Node.TYPE_UNKNOWN;
+                return local;
+            }
+            return local;
+        }
+        return tmp;
+    }
     // Проверяем объявлена ли функция, ищем ее узел
     public Tree sem5func( ArrayList<Character> lex, Container container){
         if (this.tDiagram.flag_manual_interpritation != 1)
             if( this.tDiagram.flag_interpreter != 1 )
-            return null;
-        Tree tmp = cur.findUp(lex);
+                return null;
+        Tree tmp = null;
+        tmp = cur.findUp(lex);
         if( tmp == null){
             scaner.printError("Идентификатор не определен", lex);
             container.type = Node.TYPE_UNKNOWN;
@@ -938,6 +976,14 @@ public class Semantic {
     }
 
 
+    public void deleteNode(Tree deleted){
+        if ( !(this.tDiagram.flag_manual_interpritation == 1 || this.tDiagram.flag_interpreter == 1))
+                return;
+        Tree children = deleted.left;
+        Tree parent = deleted.up;
+        parent.left = children;
+        children.up = parent;
+    }
 }
 
 

@@ -1,7 +1,7 @@
 graph binary {
 	dpi="400";
-	v0[style=filled, fillcolor=black]
-	v0[label="black"]
+	v0[style=filled, fillcolor=grey]
+	v0[label="black[0]"]
 	v0[xlabel=" "]
 	v0 -- v1
 	v0center [style=invis, width=0, label=""];
@@ -11,48 +11,100 @@ graph binary {
 	{
 		rank=same v1 -- v0center  -- v0notVisibleR  [style=invis] 
 	}
-	v1[label="func"]
-	v1[xlabel="func(int) "]
-	v1 -- v4
+	v1[label="xx[1]"]
+	v1[xlabel="int=200 "]
+	v1 -- v2
 	v1center [style=invis, width=0, label=""];
 	v1 -- v1center [style=invis];
-	v1 -- v2	{
-		rank=same v4 -- v1center  -- v2 [style=invis] 
-	}
-	v4[label="main"]
-	v4[xlabel="func(int) "]
-	v4notVisibleL [style=invis]
-	v4 -- v4notVisibleL [style=invis];
-	v4center [style=invis, width=0, label=""];
-	v4 -- v4center [style=invis];
-	v4 -- v5	{
-		rank=same v4notVisibleL -- v4center  -- v5 [style=invis] 
-	}
-	v5[style=filled, fillcolor=black]
-	v5[label="black"]
-	v5[xlabel=" "]
-	v5 -- v6
-	v5center [style=invis, width=0, label=""];
-	v5 -- v5center [style=invis];
-	v5notVisibleR [style=invis]
-	v5 -- v5notVisibleR [style=invis];
+	v1notVisibleR [style=invis]
+	v1 -- v1notVisibleR [style=invis];
 	{
-		rank=same v6 -- v5center  -- v5notVisibleR  [style=invis] 
+		rank=same v2 -- v1center  -- v1notVisibleR  [style=invis] 
 	}
-	v6[label="v"]
-	v6[xlabel="int=2 "]
-	v2[style=filled, fillcolor=black]
-	v2[label="black"]
-	v2[xlabel=" "]
-	v2 -- v3
+	v2[label="func[2]"]
+	v2[xlabel="func(int) "]
+	v2 -- v9
 	v2center [style=invis, width=0, label=""];
 	v2 -- v2center [style=invis];
-	v2notVisibleR [style=invis]
-	v2 -- v2notVisibleR [style=invis];
-	{
-		rank=same v3 -- v2center  -- v2notVisibleR  [style=invis] 
+	v2 -- v3	{
+		rank=same v9 -- v2center  -- v3 [style=invis] 
 	}
-	v3[label="a"]
-	v3[xlabel="int "]
+	v9[label="func[9]"]
+	v9[xlabel="func(int) "]
+	v9 -- v6
+	v9center [style=invis, width=0, label=""];
+	v9 -- v9center [style=invis];
+	v9 -- v10	{
+		rank=same v6 -- v9center  -- v10 [style=invis] 
+	}
+	v6[label="main[6]"]
+	v6[xlabel="func(int) "]
+	v6notVisibleL [style=invis]
+	v6 -- v6notVisibleL [style=invis];
+	v6center [style=invis, width=0, label=""];
+	v6 -- v6center [style=invis];
+	v6 -- v7	{
+		rank=same v6notVisibleL -- v6center  -- v7 [style=invis] 
+	}
+	v7[style=filled, fillcolor=grey]
+	v7[label="black[7]"]
+	v7[xlabel=" "]
+	v7 -- v8
+	v7center [style=invis, width=0, label=""];
+	v7 -- v7center [style=invis];
+	v7notVisibleR [style=invis]
+	v7 -- v7notVisibleR [style=invis];
+	{
+		rank=same v8 -- v7center  -- v7notVisibleR  [style=invis] 
+	}
+	v8[label="c[8]"]
+	v8[xlabel="int=228 "]
+	v10[style=filled, fillcolor=grey]
+	v10[label="black[10]"]
+	v10[xlabel=" "]
+	v10 -- v11
+	v10center [style=invis, width=0, label=""];
+	v10 -- v10center [style=invis];
+	v10notVisibleR [style=invis]
+	v10 -- v10notVisibleR [style=invis];
+	{
+		rank=same v11 -- v10center  -- v10notVisibleR  [style=invis] 
+	}
+	v11[label="a[11]"]
+	v11[xlabel="int "]
+	v11 -- v12
+	v11center [style=invis, width=0, label=""];
+	v11 -- v11center [style=invis];
+	v11notVisibleR [style=invis]
+	v11 -- v11notVisibleR [style=invis];
+	{
+		rank=same v12 -- v11center  -- v11notVisibleR  [style=invis] 
+	}
+	v12[label="v[12]"]
+	v12[style=filled, fillcolor=red]
+	v12[xlabel="int "]
+	v3[style=filled, fillcolor=grey]
+	v3[label="black[3]"]
+	v3[xlabel=" "]
+	v3 -- v4
+	v3center [style=invis, width=0, label=""];
+	v3 -- v3center [style=invis];
+	v3notVisibleR [style=invis]
+	v3 -- v3notVisibleR [style=invis];
+	{
+		rank=same v4 -- v3center  -- v3notVisibleR  [style=invis] 
+	}
+	v4[label="a[4]"]
+	v4[xlabel="int "]
+	v4 -- v5
+	v4center [style=invis, width=0, label=""];
+	v4 -- v4center [style=invis];
+	v4notVisibleR [style=invis]
+	v4 -- v4notVisibleR [style=invis];
+	{
+		rank=same v5 -- v4center  -- v4notVisibleR  [style=invis] 
+	}
+	v5[label="v[5]"]
+	v5[xlabel="int "]
 
 }

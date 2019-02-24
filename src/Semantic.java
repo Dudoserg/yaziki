@@ -23,6 +23,53 @@ public class Semantic {
 
     HashMap<String, Integer> types;
 
+
+    public Tree last_children_function(Tree func){
+        Tree current = func.right;
+        while (current.left != null)
+            current = current.left;
+        return current;
+    }
+
+    public Tree copy_function(Tree forCopy ){
+        Tree tmp = new Tree();
+
+
+        tmp.n = forCopy.n.copy();
+
+        if( forCopy.right != null)
+            tmp.right = copy_subTree(forCopy.right, tmp);
+
+        // вставляем указатель в дерево, В левого потомка исходной фукнции.
+
+        tmp.up = forCopy;           // Родитель копируемой функции == исходной функции
+        tmp.left = forCopy.left;    // Левый потомок копируемый фукции == левому потомку исходной
+        forCopy.left.up = tmp;          // у старого левого потомка исходной функции родитель теперь копируемая функция
+        forCopy.left = tmp;         // у исходной функции левый потомок теперь копируемая функция
+
+        return tmp;
+
+    }
+
+    private Tree copy_subTree(Tree current, Tree parent){
+        Tree tmp = new Tree();
+
+        tmp.up = parent;
+
+        // копируем всю основую информацию
+        tmp.n = current.n.copy();
+        // Если есть правое поддерево, то копируем его
+        if( current.right != null)
+            tmp.right = copy_subTree(current.right, tmp);
+
+        // Если есть левое поддерево, то заходим в него и копируем все там
+        if(current.left != null)
+            tmp.left = copy_subTree(current.left, tmp);
+
+        return tmp;
+    }
+
+
     private String arrayChar2String(Tree current){
         if( current.n.dataType == Node.TYPE_BLACK)
             return "black";
@@ -34,11 +81,13 @@ public class Semantic {
 
     private void recursion(Tree current, FileWriter writer) throws IOException {
         if(current.n.dataType == Node.TYPE_BLACK){
-            writer.write("\t" + "v" + current.n.nameNode + "[style=filled, fillcolor=black]\n"); //gray color
+            writer.write("\t" + "v" + current.n.nameNode + "[style=filled, fillcolor=grey]\n"); //gray color
         }
 
-        writer.write("\t" + "v" + current.n.nameNode + "[label=\"" + arrayChar2String(current) + "\"]\n");
-
+        writer.write("\t" + "v" + current.n.nameNode + "[label=\"" + arrayChar2String(current)+"[" + current.n.nameNode +"]" + "\"]\n");
+        if(current == cur ){
+            writer.write("\t" + "v" + current.n.nameNode + "[style=filled, fillcolor=red]\n"); //gray color
+        }
         String Xlabel = "";
         switch (current.n.dataType){
             case Node.TYPE_FUNC :{
@@ -148,6 +197,7 @@ public class Semantic {
             recursion(current.right, writer);
     }
 
+
     public  void createPicture() throws InterruptedException, IOException {
         try(FileWriter writer = new FileWriter("result.gv", false))
         {
@@ -173,7 +223,7 @@ public class Semantic {
     }
 
 
-
+/////////////////////////////
     public Semantic() {
         types = new HashMap<>();
         types.put("int", TYPE_INTEGER);
@@ -207,7 +257,7 @@ public class Semantic {
         {
             // не функция
             Node b = new Node();
-            b.nameNode = ++Node.countNode;
+            b.nameNode = Node.get_next_nameNode();
 
             b.id = new ArrayList<>(a);
             b.dataType  =  t.type;
@@ -224,7 +274,7 @@ public class Semantic {
         {
             // Функция
             Node b = new Node();
-            b.nameNode = ++Node.countNode;
+            b.nameNode = Node.get_next_nameNode();
 
             b.id = new ArrayList<>(a);
             b.dataType = t.type;
@@ -236,7 +286,7 @@ public class Semantic {
             v = cur; // это точка возврата после выхода из функции
 
             b = new Node();
-            b.nameNode = ++Node.countNode;
+            b.nameNode = Node.get_next_nameNode();
 
             b.dataType = Node.TYPE_BLACK;
             b.data = null;
@@ -330,7 +380,7 @@ public class Semantic {
 
         // не функция
         Node b = new Node();
-        b.nameNode = ++Node.countNode;
+        b.nameNode = Node.get_next_nameNode();
 
         b.id = new ArrayList<>(lex);
         b.dataType  =  t.type;
@@ -356,7 +406,7 @@ public class Semantic {
 
         // не функция
         Node b = new Node();
-        b.nameNode = ++Node.countNode;
+        b.nameNode = Node.get_next_nameNode();
 
         b.id = new ArrayList<>(lex);
         b.dataType  =  t.type;
@@ -423,7 +473,7 @@ public class Semantic {
             //return null;
         }
         Node b = new Node();
-        b.nameNode = ++Node.countNode;
+        b.nameNode = Node.get_next_nameNode();
 
         b.id = new ArrayList<>(lex);
         b.dataType = Node.TYPE_FUNC;
@@ -435,7 +485,7 @@ public class Semantic {
         Tree v = cur;
 
         b = new Node();
-        b.nameNode = ++Node.countNode;
+        b.nameNode = Node.get_next_nameNode();
 
         b.id = null;
         b.dataType = Node.TYPE_BLACK;
@@ -470,7 +520,7 @@ public class Semantic {
             if( this.tDiagram.flag_interpreter != 1 )
             return null;
         Node b = new Node();
-        b.nameNode = ++Node.countNode;
+        b.nameNode = Node.get_next_nameNode();
 
         b.id = null;
         b.dataType = Node.TYPE_BLACK;
@@ -484,7 +534,7 @@ public class Semantic {
         Tree v = cur;
 
         b = new Node();
-        b.nameNode = ++Node.countNode;
+        b.nameNode = Node.get_next_nameNode();
 
         b.id = null;
         b.dataType = Node.TYPE_BLACK;
@@ -547,7 +597,7 @@ public class Semantic {
         return tmp;
     }
 
-
+    // Проверяем объявлена ли функция, ищем ее узел
     public Tree sem5func( ArrayList<Character> lex, Container container){
         if (this.tDiagram.flag_manual_interpritation != 1)
             if( this.tDiagram.flag_interpreter != 1 )
@@ -584,15 +634,17 @@ public class Semantic {
     }
 
 
-    public void semCheckType(int countParam, Tree k,Container type, ArrayList<Character> lex){
+    // Проверяем количество параметров функции и совпадение их типов
+    public boolean semCheckType(int countParam, Tree k,Container type, ArrayList<Character> lex){
         if (this.tDiagram.flag_manual_interpritation != 1)
             if( this.tDiagram.flag_interpreter != 1 )
-            return ;
+            return true;
         if( k == null ){
-            return;
+            return false;
         }
         if( countParam > k.n.param ){
             scaner.printError("Несовпадение количества параметров функции(что то их тут многовато)", lex);
+            return false;
         }
         else {
             // Ищем параметр # param
@@ -602,23 +654,28 @@ public class Semantic {
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////Проверить приведение типов
                 Container tmpContainer = new Container();
                 tmpContainer.type = tmp.n.dataType;
-                if( sem3(tmpContainer,type,lex) == false)
+                if( sem3(tmpContainer,type,lex) == false){
                     scaner.printError("Несовпадение типов параметров функции", lex);
+                    return false;
+                }
             }
         }
+        return true;
     }
 
 
-    public void semCheckCountParam(int countParam, Tree k, ArrayList<Character> lex){
+    public boolean semCheckCountParam(int countParam, Tree k, ArrayList<Character> lex){
         if (this.tDiagram.flag_manual_interpritation != 1)
             if( this.tDiagram.flag_interpreter != 1 )
-                return ;
+                return true;
         if( k == null ){
-            return;
+            return false;
         }
         if(countParam != k.n.param){
             scaner.printError("Несовпадение количества параметров функции", lex);
+            return false;
         }
+        return true;
 
     }
 

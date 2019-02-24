@@ -12,12 +12,24 @@ public class Container {
     }
 
     public Container() {
+
         this.initialize();
     }
 
     private void initialize(){
+
         this.value = new TDataValue();
     }
+
+
+    // Используем для копирования контейрена, чтобы передать через стек значение
+    public Container copy(){
+        Container tmp = new Container();
+        tmp.type = this.type;
+        tmp.value = this.value.copy();
+        return tmp;
+    }
+
     // используется при присваивании одной переменной значение другой
     public TDataValue value_Copy(){
 

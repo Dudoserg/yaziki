@@ -1,8 +1,10 @@
-int func(int a){
-
-    a = a + 2;
+int xx = (23 - (3)) * 10;
+int func(int a, int v){
+    int s =  2;
 }
 int main(){
-    int v = 2;
-    
+    int c = 228;
+    func(5, 6 + 9);
+    int b;
+
 }

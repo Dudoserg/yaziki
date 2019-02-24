@@ -10,7 +10,14 @@ public class Node {
     static final int TYPE_BLACK = 5;
     static final int TYPE_CHAR = 6;
     static final int TYPE_BOOLEAN = 7;
-    static int countNode = 0;
+    private static int countNode = 0;
+    public static int get_next_nameNode(){
+        Node.countNode++;
+        return Node.countNode;
+    }
+    public static int get_next_numberNode(){
+        return Node.get_next_nameNode();
+    }
 
     int nameNode;
     ArrayList<Character> id;        // Изображение
@@ -29,6 +36,8 @@ public class Node {
 
     SavePoint savePoint_before_body_function;
 
+    SavePoint savePoint_after_function_call;
+
     //////////////////////////////////////////////////////////////////////////
     TDataValue value;
     //////////////////////////////////////////////////////////////////////////
@@ -40,5 +49,37 @@ public class Node {
 
     public TDataValue value_copy(){
         return this.value.copy();
+    }
+
+    public Node copy(){
+        Node result = new Node();
+        result.savePoint_after_function_call = this.savePoint_after_function_call;
+
+        result.savePoint_before_body_function = this.savePoint_before_body_function;
+
+        if( this.value != null)
+            result.value = this.value.copy();
+
+        result.flag_declared = this.flag_declared;
+
+        result.flag_constant = this.flag_constant;
+
+        result.returnType = this.returnType;
+
+        result.param = this.param;
+
+        if( this.data != null)
+            result.data = new ArrayList<Character>(this.data);
+
+        result.dataType = this.dataType;
+
+        if( this.id != null){
+            result.id = new ArrayList<>();
+            result.id.addAll(0,this.id);
+        }
+
+        result.nameNode = (Node.get_next_nameNode());
+
+        return result;
     }
 }

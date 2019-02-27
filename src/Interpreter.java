@@ -888,4 +888,62 @@ public class Interpreter {
 
     }
 
+    // Конец функции, в случае ретерна, и в случае конца блока функции
+    // true значит прекращаем функцию из которой вызвана эта функция
+    public boolean end_function(Container containerT){
+        // Если не интерпритируем, то не идем дальше
+        if (this.tDiagram.flag_manual_interpritation == 1 || this.tDiagram.flag_interpreter == 1) {
+            // сохраняем полученное значение в функцию
+            // приводим типы
+            this.set_value_in_return(this.tDiagram.pointer_current_function, containerT);
+
+
+            // возвращаемся на место, где закончен вызов функции
+            if (this.tDiagram.pointer_current_function != null)
+                this.tDiagram.scaner.setSavePoint(this.tDiagram.pointer_current_function.n.savePoint_after_function_call);
+
+        }
+        if (this.tDiagram.flag_manual_interpritation != 1) {
+            if (this.tDiagram.flag_interpreter != 1)
+                return true;
+        }
+        return false;
+    }
+    public boolean end_function( ){
+        // Если не интерпритируем, то не идем дальше
+        if (this.tDiagram.flag_manual_interpritation == 1 || this.tDiagram.flag_interpreter == 1) {
+            Container containerT = new Container();
+            containerT.type = this.tDiagram.pointer_current_function.n.returnType;
+            switch (this.tDiagram.pointer_current_function.n.returnType){
+                case Node.TYPE_INTEGER:{
+                    containerT.value.set_data_Int(0);
+                    break;
+                }
+                case Node.TYPE_DOUBLE:{
+                    containerT.value.set_data_Double(0);
+                    break;
+                }
+                case Node.TYPE_CHAR:{
+                    containerT.value.set_data_Char(0);
+                    break;
+                }
+            }
+
+            // сохраняем полученное значение в функцию
+            // приводим типы
+            this.set_value_in_return(this.tDiagram.pointer_current_function, containerT);
+
+
+            // возвращаемся на место, где закончен вызов функции
+            if (this.tDiagram.pointer_current_function != null)
+                this.tDiagram.scaner.setSavePoint(this.tDiagram.pointer_current_function.n.savePoint_after_function_call);
+
+        }
+        if (this.tDiagram.flag_manual_interpritation != 1) {
+            if (this.tDiagram.flag_interpreter != 1)
+                return true;
+        }
+        return false;
+    }
+
 }

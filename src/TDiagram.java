@@ -22,7 +22,7 @@ public class TDiagram {
 
     boolean SHOW_NAME_NOT_TERMINAL = false;
 
-    public TDiagram() throws IOException, InterruptedException {
+    public TDiagram() throws IOException, InterruptedException, Exception {
 
         scaner = new Scaner();
         if( this.programma()){
@@ -37,7 +37,7 @@ public class TDiagram {
         return ( this.flag_manual_interpritation == 1 || this.flag_interpreter == 1);
     }
 
-    public boolean programma() throws IOException, InterruptedException {
+    public boolean programma() throws IOException, InterruptedException, Exception {
         ArrayList<Character> l = new ArrayList<>();
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         semantic = new Semantic();
@@ -112,7 +112,7 @@ public class TDiagram {
 
 
     // Объявление констант
-    public boolean declaration_of_constant() throws IOException, InterruptedException {
+    public boolean declaration_of_constant() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("declaration_of_constant");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -188,7 +188,7 @@ public class TDiagram {
 
 
     /// / Объявление переменных
-    public boolean declaration_of_variable() throws IOException, InterruptedException {
+    public boolean declaration_of_variable() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("declaration_of_variable");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -255,7 +255,7 @@ public class TDiagram {
 
 
     // функция
-    public boolean func() throws IOException, InterruptedException {
+    public boolean func() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("func");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -362,7 +362,7 @@ public class TDiagram {
 
 
     // составной оператор
-    public boolean compound_operator_WITHOUT_CREATE_BLACK_VERTEX( ) throws IOException, InterruptedException {
+    public boolean compound_operator_WITHOUT_CREATE_BLACK_VERTEX( ) throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("compound_operator");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -420,12 +420,25 @@ public class TDiagram {
             scaner.printError("19ожидался символ '}'",l);
             return false;
         }
-        return true;
+
+
+
+        if( this.pointer_current_function != null){
+            if(interpreter.end_function() == true)
+                return true;
+        }
+        else{
+            // Это main
+            return true;
+        }
+
+
+        return false;
     }
 
 
     // составной оператор
-    public boolean compound_operator() throws IOException, InterruptedException {
+    public boolean compound_operator() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("compound_operator");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -492,7 +505,7 @@ public class TDiagram {
     }
 
 
-    public boolean func_return() throws IOException, InterruptedException {
+    public boolean func_return() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("func_return");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -515,26 +528,13 @@ public class TDiagram {
             scaner.printError("33ожидался символ ';'",l);
             return false;
         }
-        // Если не интерпритируем, то не идем дальше
-        if (this.flag_manual_interpritation == 1 || this.flag_interpreter == 1) {
-            // сохраняем полученное значение в функцию
-            // приводим типы
-            interpreter.set_value_in_return(this.pointer_current_function, containerT);
-
-
-            // возвращаемся на место, где закончен вызов функции
-            if (this.pointer_current_function != null)
-                this.scaner.setSavePoint(this.pointer_current_function.n.savePoint_after_function_call);
-
-        }
-        if (this.flag_manual_interpritation != 1)
-            if( this.flag_interpreter != 1 )
-                return true;
+        if(interpreter.end_function(containerT) == true)
+            return true;
         return false;
     }
 
     // Оператор
-    public boolean operator() throws IOException, InterruptedException {
+    public boolean operator() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("operator");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -604,7 +604,7 @@ public class TDiagram {
 
 
     // присваивание
-    public boolean assignment() throws IOException, InterruptedException {
+    public boolean assignment() throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("assignment");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -648,7 +648,7 @@ public class TDiagram {
         return true;
     }
     // вызов функции
-    public boolean func_call(Container container) throws IOException, InterruptedException {
+    public boolean func_call(Container container) throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("function_call");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -777,8 +777,10 @@ public class TDiagram {
 
 
         //считываем значение с функции
+
         container.value = this.pointer_current_function.n.value.copy();
         container.type = this.pointer_current_function.n.returnType;
+
 
         // восстанавливаем глобальный указатель на вызыванную функцию
         this.pointer_current_function = local_pointer_current_function;
@@ -797,7 +799,7 @@ public class TDiagram {
         /////////////////////////
     }
     // if иф
-    public boolean func_if() throws IOException, InterruptedException {
+    public boolean func_if() throws IOException, InterruptedException, Exception {
         ///////////////////////////////////////////////////////////////////// inter
         // Точка 7: сохраняем текущее значение флага интерпретации
         int local_flag_interpreter = this.flag_interpreter;
@@ -871,7 +873,7 @@ public class TDiagram {
 
 
     // выражение
-    public boolean expression(Container container) throws IOException, InterruptedException{
+    public boolean expression(Container container) throws IOException, InterruptedException, Exception{
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("expression");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -902,7 +904,7 @@ public class TDiagram {
         return true;
     }
 
-    public boolean A2(Container container) throws IOException, InterruptedException {
+    public boolean A2(Container container) throws IOException, InterruptedException, Exception {
 
 //
 
@@ -935,7 +937,7 @@ public class TDiagram {
         return true;
     }
 
-    public boolean A3(Container container) throws IOException, InterruptedException {
+    public boolean A3(Container container) throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("A3");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -964,7 +966,7 @@ public class TDiagram {
        scaner.setSavePoint(savePoint1);
         return true;
     }
-    public boolean A4( Container container) throws IOException, InterruptedException {
+    public boolean A4( Container container) throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("A4");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -993,7 +995,7 @@ public class TDiagram {
         return true;
     }
 
-    public boolean A5(Container container) throws IOException, InterruptedException {
+    public boolean A5(Container container) throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("A5");
         ArrayList<Character> l = new ArrayList<>();
         int t ;
@@ -1022,7 +1024,7 @@ public class TDiagram {
         return true;
     }
 
-    public boolean A6( Container container) throws IOException, InterruptedException {
+    public boolean A6( Container container) throws IOException, InterruptedException, Exception {
         if(SHOW_NAME_NOT_TERMINAL) System.out.println("A6");
         ArrayList<Character> l = new ArrayList<>();
         int t ;

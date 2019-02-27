@@ -601,7 +601,7 @@ public class Semantic {
     }
 
 
-    public  Tree find_prototype_function(ArrayList<Character> lex, Container container) throws IOException, InterruptedException {
+    public  Tree find_prototype_function(ArrayList<Character> lex, Container container) throws Exception {
         this.createPicture();
         if (this.tDiagram.flag_manual_interpritation != 1){
             if( this.tDiagram.flag_interpreter != 1 )
@@ -609,6 +609,16 @@ public class Semantic {
         }
         Tree tmp = null;
         tmp = cur.findUp(lex);
+
+        if( tmp == null){
+//          scaner.printError("Идентификатор не определен", lex);
+            container.type = Node.TYPE_UNKNOWN;
+//          return tmp;
+            scaner.printError("Идентификатор не определен", lex);
+            throw new Exception("Something went wrong");
+
+        }
+        // Убеждаемся что это прототип
         do{
             if( tmp.n.prototype == 1)
                 break;
@@ -617,11 +627,7 @@ public class Semantic {
 
         }while (true);
 
-        if( tmp == null){
-            scaner.printError("Идентификатор не определен", lex);
-            container.type = Node.TYPE_UNKNOWN;
-            return tmp;
-        }
+
         if( tmp.n.dataType != Node.TYPE_FUNC){
             // Теперь пройдемся вверх, ища функцию
             Tree local = cur.findFunction(lex);

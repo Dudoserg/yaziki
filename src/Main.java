@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Main {
 
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws Exception {
 
 //        ArrayList<Character> tmp = new ArrayList<>();
 //        tmp.add('d');
@@ -43,6 +43,7 @@ public class Main {
             } while (resultScaner != scaner._END);
         }
         else {
+
             TDiagram tDiagram = new TDiagram();
         }
 

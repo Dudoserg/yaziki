@@ -23,7 +23,7 @@ public class TDataValue {
         this.data_Int = 0;
         this.data_Double = 0;
         this.data_Boolean = false;
-        this.data_Char = '.';
+        this.data_Char = Character.MIN_VALUE;;
     }
 
     void set_data_Int(int x){

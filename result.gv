@@ -11,37 +11,16 @@ graph binary {
 	{
 		rank=same v1 -- v0center  -- v0notVisibleR  [style=invis] 
 	}
-	v1[label="func[1]"]
+	v1[label="main[1]"]
+	v1[style=filled, fillcolor=red]
 	v1[xlabel="func(int) "]
-	v1 -- v4
+	v1notVisibleL [style=invis]
+	v1 -- v1notVisibleL [style=invis];
 	v1center [style=invis, width=0, label=""];
 	v1 -- v1center [style=invis];
 	v1 -- v2	{
-		rank=same v4 -- v1center  -- v2 [style=invis] 
+		rank=same v1notVisibleL -- v1center  -- v2 [style=invis] 
 	}
-	v4[label="main[4]"]
-	v4[style=filled, fillcolor=red]
-	v4[xlabel="func(int) "]
-	v4notVisibleL [style=invis]
-	v4 -- v4notVisibleL [style=invis];
-	v4center [style=invis, width=0, label=""];
-	v4 -- v4center [style=invis];
-	v4 -- v5	{
-		rank=same v4notVisibleL -- v4center  -- v5 [style=invis] 
-	}
-	v5[style=filled, fillcolor=grey]
-	v5[label="black[5]"]
-	v5[xlabel=" "]
-	v5 -- v6
-	v5center [style=invis, width=0, label=""];
-	v5 -- v5center [style=invis];
-	v5notVisibleR [style=invis]
-	v5 -- v5notVisibleR [style=invis];
-	{
-		rank=same v6 -- v5center  -- v5notVisibleR  [style=invis] 
-	}
-	v6[label="x[6]"]
-	v6[xlabel="int=6765 "]
 	v2[style=filled, fillcolor=grey]
 	v2[label="black[2]"]
 	v2[xlabel=" "]
@@ -53,7 +32,7 @@ graph binary {
 	{
 		rank=same v3 -- v2center  -- v2notVisibleR  [style=invis] 
 	}
-	v3[label="a[3]"]
-	v3[xlabel="int "]
+	v3[label="x[3]"]
+	v3[xlabel="double=0.0 "]
 
 }

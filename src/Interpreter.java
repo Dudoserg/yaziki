@@ -317,7 +317,7 @@ public class Interpreter {
                         }
                         // /
                         else if( sign == Scaner._SLASH){
-                            first.value.set_data_Double( first.value.data_Double / second.value.data_Int);
+                            first.value.set_data_Double( first.value.data_Double / (double)second.value.data_Int);
                         }
                         // %
                         else if( sign == Scaner._PERCENT){  /////////////////////////////////////////////////////////////////////////////////////

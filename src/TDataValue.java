@@ -22,8 +22,73 @@ public class TDataValue {
     private void clearData(){
         this.data_Int = 0;
         this.data_Double = 0;
-        this.data_Boolean = false;
+        this.data_Boolean
+                = false;
         this.data_Char = Character.MIN_VALUE;;
+    }
+
+    void change_types(int newTypes, int oldTypes){
+        switch (newTypes){
+            case Node.TYPE_INTEGER:{
+                switch (oldTypes){
+                    case Node.TYPE_INTEGER:{
+                        this.set_data_Int(this.data_Int);
+                        break;
+                    }
+
+                    case  Node.TYPE_DOUBLE:{
+                        this.set_data_Int(this.data_Double);
+                        break;
+                    }
+
+                    case Node.TYPE_CHAR:{
+                        this.set_data_Int(this.data_Char);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case  Node.TYPE_DOUBLE:{
+                switch (oldTypes){
+                    case Node.TYPE_INTEGER:{
+                        this.set_data_Double(this.data_Int);
+                        break;
+                    }
+
+                    case  Node.TYPE_DOUBLE:{
+                        this.set_data_Double(this.data_Double);
+                        break;
+                    }
+
+                    case Node.TYPE_CHAR:{
+                        this.set_data_Double(this.data_Char);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case Node.TYPE_CHAR:{
+                switch (oldTypes){
+                    case Node.TYPE_INTEGER:{
+                        this.set_data_Char(this.data_Int);
+                        break;
+                    }
+
+                    case  Node.TYPE_DOUBLE:{
+                        this.set_data_Char(this.data_Double);
+                        break;
+                    }
+
+                    case Node.TYPE_CHAR:{
+                        this.set_data_Char(this.data_Char);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
     }
 
     void set_data_Int(int x){

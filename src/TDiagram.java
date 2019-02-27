@@ -890,7 +890,9 @@ public class TDiagram {
             if( !A2(containerG))
                 return false;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// sem6
-            container.type = semantic.sem6(container, containerG, t, l);
+            int newType = semantic.sem6(container, containerG, t, l);
+            container.value.change_types(newType, container.type);
+            container.type = newType;
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// interpreter calculate
             interpreter.calculate(container, containerG, t);
@@ -924,7 +926,9 @@ public class TDiagram {
             if ( !this.A3(containerG))
                 return false;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// sem6
-            container.type = semantic.sem6(container, containerG, t, l);
+            int newType = semantic.sem6(container, containerG, t, l);
+            container.value.change_types(newType, container.type);
+            container.type = newType;
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// interpreter calculate
             interpreter.calculate(container, containerG, t);
@@ -954,7 +958,9 @@ public class TDiagram {
             if( !this.A4(containerG))
                 return false;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// sem6
-            container.type = semantic.sem6(container, containerG, t, l);
+            int newType = semantic.sem6(container, containerG, t, l);
+            container.value.change_types(newType, container.type);
+            container.type = newType;
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// interpreter calculate
             interpreter.calculate(container, containerG, t);
@@ -984,7 +990,9 @@ public class TDiagram {
             if( !this.A5(containerG))
                 return false;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// sem6
-            container.type = semantic.sem6(container, containerG, t, l);
+            int newType = semantic.sem6(container, containerG, t, l);
+            container.value.change_types(newType, container.type);
+            container.type = newType;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// interpreter calculate
             interpreter.calculate(container, containerG, t);
             ///////////////////////////////////////////////////////////////////////////////////////////////////fu//////////
@@ -1012,7 +1020,9 @@ public class TDiagram {
             if( !this.A6(containerG))
                 return false;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// sem6
-            container.type = semantic.sem6(container, containerG, t, l);
+            int newType = semantic.sem6(container, containerG, t, l);
+            container.value.change_types(newType, container.type);
+            container.type = newType;
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////// interpreter calculate
             interpreter.calculate(container, containerG, t);
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////

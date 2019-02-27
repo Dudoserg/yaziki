@@ -317,6 +317,8 @@ public class Interpreter {
                         }
                         // /
                         else if( sign == Scaner._SLASH){
+                            double x = first.value.data_Double;
+                            int xx = second.value.data_Int;
                             first.value.set_data_Double( first.value.data_Double / (double)second.value.data_Int);
                         }
                         // %
@@ -807,6 +809,9 @@ public class Interpreter {
         if (this.tDiagram.flag_manual_interpritation != 1)
             if( this.tDiagram.flag_interpreter != 1 )
                 return ;
+        int newType = k.n.dataType ;// теперь тип таким станет
+        container.value.change_types(newType, container.type);
+        container.type = newType;
         //
         k.n.value = container.value_Copy();
 

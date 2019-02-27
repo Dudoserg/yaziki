@@ -435,8 +435,10 @@ public class Semantic {
         }
 
         // Впринципе не обязательно
-        if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_INTEGER)
+        if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_INTEGER) {
+
             return true;
+        }
 
         if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_DOUBLE)
             return true;
@@ -762,13 +764,13 @@ public class Semantic {
 
         if( sign == Scaner._STAR){
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_INTEGER)
-                return Node.TYPE_INTEGER;
+                return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_DOUBLE)
                 return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_CHAR)
-                return Node.TYPE_INTEGER;
+                return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_DOUBLE && g.type == Node.TYPE_INTEGER)
                 return Node.TYPE_DOUBLE;
@@ -780,24 +782,24 @@ public class Semantic {
                 return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_CHAR && g.type == Node.TYPE_INTEGER)
-                return  Node.TYPE_INTEGER;
+                return  Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_CHAR && g.type == Node.TYPE_DOUBLE)
                 return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_CHAR && g.type == Node.TYPE_CHAR)
-                return Node.TYPE_INTEGER;
+                return Node.TYPE_DOUBLE;
 
         }
         if( sign == Scaner._SLASH){
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_INTEGER)
-                return  Node.TYPE_INTEGER;
+                return  Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_DOUBLE)
                 return  Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_CHAR)
-                return Node.TYPE_INTEGER;
+                return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_DOUBLE && g.type == Node.TYPE_INTEGER)
                 return Node.TYPE_DOUBLE;
@@ -809,13 +811,13 @@ public class Semantic {
                 return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_CHAR && g.type == Node.TYPE_INTEGER)
-                return  Node.TYPE_INTEGER;
+                return  Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_CHAR && g.type == Node.TYPE_DOUBLE)
                 return Node.TYPE_DOUBLE;
 
             if( t.type == Node.TYPE_CHAR && g.type == Node.TYPE_CHAR)
-                return Node.TYPE_INTEGER;
+                return Node.TYPE_DOUBLE;
         }
         if( sign == Scaner._PERCENT){
             if( t.type == Node.TYPE_INTEGER && g.type == Node.TYPE_INTEGER)

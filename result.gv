@@ -20,7 +20,7 @@ graph binary {
 		rank=same v4 -- v1center  -- v2 [style=invis] 
 	}
 	v4[label="globali[4]"]
-	v4[xlabel="int=9 "]
+	v4[xlabel="int=7 "]
 	v4 -- v5
 	v4center [style=invis, width=0, label=""];
 	v4 -- v4center [style=invis];
@@ -30,7 +30,7 @@ graph binary {
 		rank=same v5 -- v4center  -- v4notVisibleR  [style=invis] 
 	}
 	v5[label="globaln[5]"]
-	v5[xlabel="int=5 "]
+	v5[xlabel="int=4 "]
 	v5 -- v6
 	v5center [style=invis, width=0, label=""];
 	v5 -- v5center [style=invis];
@@ -40,7 +40,7 @@ graph binary {
 		rank=same v6 -- v5center  -- v5notVisibleR  [style=invis] 
 	}
 	v6[label="globalpoverty[6]"]
-	v6[xlabel="double=0.22936652566511356 "]
+	v6[xlabel="double=9.429802829120437 "]
 	v6 -- v7
 	v6center [style=invis, width=0, label=""];
 	v6 -- v6center [style=invis];
@@ -50,7 +50,7 @@ graph binary {
 		rank=same v7 -- v6center  -- v6notVisibleR  [style=invis] 
 	}
 	v7[label="globalx[7]"]
-	v7[xlabel="double=0.8490783783783784 "]
+	v7[xlabel="double=1.377890350877193 "]
 	v7 -- v8
 	v7center [style=invis, width=0, label=""];
 	v7 -- v7center [style=invis];
@@ -60,7 +60,7 @@ graph binary {
 		rank=same v8 -- v7center  -- v7notVisibleR  [style=invis] 
 	}
 	v8[label="cycle[8]"]
-	v8[xlabel="func(double) "]
+	v8[xlabel="func(int) "]
 	v8 -- v10
 	v8center [style=invis, width=0, label=""];
 	v8 -- v8center [style=invis];
@@ -83,27 +83,101 @@ graph binary {
 	v14 -- v15	{
 		rank=same v17 -- v14center  -- v15 [style=invis] 
 	}
-	v17[label="expended[17]"]
-	v17[xlabel="func(double) "]
-	v17 -- v20
+	v17[label="countafterpoint[17]"]
+	v17[xlabel="int=4 "]
+	v17 -- v18
 	v17center [style=invis, width=0, label=""];
 	v17 -- v17center [style=invis];
-	v17 -- v18	{
-		rank=same v20 -- v17center  -- v18 [style=invis] 
+	v17notVisibleR [style=invis]
+	v17 -- v17notVisibleR [style=invis];
+	{
+		rank=same v18 -- v17center  -- v17notVisibleR  [style=invis] 
 	}
-	v20[label="main[20]"]
-	v20[style=filled, fillcolor=red]
-	v20[xlabel="func(int) "]
-	v20notVisibleL [style=invis]
-	v20 -- v20notVisibleL [style=invis];
+	v18[label="globalsum[18]"]
+	v18[xlabel="double=0.9814027748351055 "]
+	v18 -- v19
+	v18center [style=invis, width=0, label=""];
+	v18 -- v18center [style=invis];
+	v18notVisibleR [style=invis]
+	v18 -- v18notVisibleR [style=invis];
+	{
+		rank=same v19 -- v18center  -- v18notVisibleR  [style=invis] 
+	}
+	v19[label="cycle2[19]"]
+	v19[xlabel="func(int) "]
+	v19 -- v23
+	v19center [style=invis, width=0, label=""];
+	v19 -- v19center [style=invis];
+	v19 -- v20	{
+		rank=same v23 -- v19center  -- v20 [style=invis] 
+	}
+	v23[label="expended[23]"]
+	v23[xlabel="func(double) "]
+	v23 -- v26
+	v23center [style=invis, width=0, label=""];
+	v23 -- v23center [style=invis];
+	v23 -- v24	{
+		rank=same v26 -- v23center  -- v24 [style=invis] 
+	}
+	v26[label="main[26]"]
+	v26[style=filled, fillcolor=red]
+	v26[xlabel="func(int) "]
+	v26notVisibleL [style=invis]
+	v26 -- v26notVisibleL [style=invis];
+	v26center [style=invis, width=0, label=""];
+	v26 -- v26center [style=invis];
+	v26 -- v27	{
+		rank=same v26notVisibleL -- v26center  -- v27 [style=invis] 
+	}
+	v27[style=filled, fillcolor=grey]
+	v27[label="black[27]"]
+	v27[xlabel=" "]
+	v27 -- v28
+	v27center [style=invis, width=0, label=""];
+	v27 -- v27center [style=invis];
+	v27notVisibleR [style=invis]
+	v27 -- v27notVisibleR [style=invis];
+	{
+		rank=same v28 -- v27center  -- v27notVisibleR  [style=invis] 
+	}
+	v28[label="x[28]"]
+	v28[xlabel="double=1.377890350877193 "]
+	v28 -- v29
+	v28center [style=invis, width=0, label=""];
+	v28 -- v28center [style=invis];
+	v28notVisibleR [style=invis]
+	v28 -- v28notVisibleR [style=invis];
+	{
+		rank=same v29 -- v28center  -- v28notVisibleR  [style=invis] 
+	}
+	v29[label="y[29]"]
+	v29[xlabel="double=0.9814027748351055 "]
+	v24[style=filled, fillcolor=grey]
+	v24[label="black[24]"]
+	v24[xlabel=" "]
+	v24 -- v25
+	v24center [style=invis, width=0, label=""];
+	v24 -- v24center [style=invis];
+	v24notVisibleR [style=invis]
+	v24 -- v24notVisibleR [style=invis];
+	{
+		rank=same v25 -- v24center  -- v24notVisibleR  [style=invis] 
+	}
+	v25[label="x[25]"]
+	v25[xlabel="double "]
+	v20[style=filled, fillcolor=grey]
+	v20[label="black[20]"]
+	v20[xlabel=" "]
+	v20 -- v21
 	v20center [style=invis, width=0, label=""];
 	v20 -- v20center [style=invis];
-	v20 -- v21	{
-		rank=same v20notVisibleL -- v20center  -- v21 [style=invis] 
+	v20notVisibleR [style=invis]
+	v20 -- v20notVisibleR [style=invis];
+	{
+		rank=same v21 -- v20center  -- v20notVisibleR  [style=invis] 
 	}
-	v21[style=filled, fillcolor=grey]
-	v21[label="black[21]"]
-	v21[xlabel=" "]
+	v21[label="n[21]"]
+	v21[xlabel="int "]
 	v21 -- v22
 	v21center [style=invis, width=0, label=""];
 	v21 -- v21center [style=invis];
@@ -113,30 +187,7 @@ graph binary {
 		rank=same v22 -- v21center  -- v21notVisibleR  [style=invis] 
 	}
 	v22[label="x[22]"]
-	v22[xlabel="double=0.8490783783783784 "]
-	v22 -- v23
-	v22center [style=invis, width=0, label=""];
-	v22 -- v22center [style=invis];
-	v22notVisibleR [style=invis]
-	v22 -- v22notVisibleR [style=invis];
-	{
-		rank=same v23 -- v22center  -- v22notVisibleR  [style=invis] 
-	}
-	v23[label="y[23]"]
-	v23[xlabel="double=0.7506718355490761 "]
-	v18[style=filled, fillcolor=grey]
-	v18[label="black[18]"]
-	v18[xlabel=" "]
-	v18 -- v19
-	v18center [style=invis, width=0, label=""];
-	v18 -- v18center [style=invis];
-	v18notVisibleR [style=invis]
-	v18 -- v18notVisibleR [style=invis];
-	{
-		rank=same v19 -- v18center  -- v18notVisibleR  [style=invis] 
-	}
-	v19[label="x[19]"]
-	v19[xlabel="double "]
+	v22[xlabel="double "]
 	v15[style=filled, fillcolor=grey]
 	v15[label="black[15]"]
 	v15[xlabel=" "]

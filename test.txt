@@ -1,11 +1,11 @@
 int fuct(int a)
 {
-  if (a > 1)
-  {
-    return a * fuct(a - 1);
-  }
-  else
-    return 1;
+	if (a > 1)
+	{
+		return a * fuct(a - 1);
+	}
+	else
+		return 1;
 }
 
 int globali = 0;
@@ -13,60 +13,68 @@ int globaln = 0;
 double globalpoverty = 0;
 double globalx = 0;
 
-double cycle(){
-    if( globali < 2 * globaln - 1){
-        globali = globali + 1;
-        globalpoverty = globalpoverty * globalx;
-        cycle();
-    }
+int cycle() {
+	if (globali < 2 * globaln - 1) {
+		globali = globali + 1;
+		globalpoverty = globalpoverty * globalx;
+		cycle();
+	}
 }
 
 double pover(double x, int n)
 {
-  double poverty = 1;
-  globalpoverty = 1;
-  globaln = n;
-  globali = 0;
-  globalx = x;
+	double poverty = 1;
+	globalpoverty = 1;
+	globaln = n;
+	globali = 0;
+	globalx = x;
 
-  cycle();
-  poverty = globalpoverty;
+	cycle();
+	poverty = globalpoverty;
 
-  return poverty;
+	return poverty;
 }
 
 int sgn(int n)
 {
-  int k = 0;
-  k = n % 2;
-  if (k == 0)
-  {
-    return 0 - 1;
-  }
-  else
-    return 1;
+	int k = 0;
+	k = n % 2;
+	if (k == 0)
+	{
+		return 0 - 1;
+	}
+	else
+		return 1;
+}
+
+int countafterpoint = 3;
+
+double globalsum = 0;
+
+int cycle2(int n, double x) {
+	if (n <= countafterpoint) {
+		globalsum = globalsum + (sgn(n)*pover(x, n)) / fuct(2 * n - 1);
+		cycle2(n + 1, x);
+	}
+	return 0;
 }
 
 double expended(double x)
 {
-  double summ = 0;
+	double summ = 0;
+    countafterpoint = countafterpoint + 1;
 
+	cycle2(1, x);
 
-    summ = summ + (sgn(1)*pover(x, 1)) / fuct(2 * 1 - 1);
-    summ = summ + (sgn(2)*pover(x, 2)) / fuct(2 * 2 - 1);
-    summ = summ + (sgn(3)*pover(x, 3)) / fuct(2 * 3 - 1);
-    summ = summ + (sgn(4)*pover(x, 4)) / fuct(2 * 4 - 1);
-    summ = summ + (sgn(5)*pover(x, 5)) / fuct(2 * 5 - 1);
-
-
-  return summ;
+	summ = globalsum;
+	return summ;
 }
 
 int main()
 {
   double x = 0;
   double y = 0;
-  x = 314159 / 370000;
+  x = 314159 / 228000;
   y = expended(x);
 
 }
